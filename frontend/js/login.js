@@ -67,6 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manejar el botón de registro
     registroBtn.addEventListener('click', function() {
         console.log('Redirigiendo a registro...');
-        window.location.href = './pages/register.html';
+        window.location.href = './register.html';
     });
 });
