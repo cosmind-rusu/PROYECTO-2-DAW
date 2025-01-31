@@ -18,7 +18,7 @@ dotnet ef migrations add Inicial
 dotnet ef database update
 
 ## SWAGGER
-http://localhost:5230/swagger/
+http://localhost:5230/swagger/ <!-- para hacer consultas a la api -->
 
 
 ## GENERAR TOKEN

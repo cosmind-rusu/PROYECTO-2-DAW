@@ -8,21 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        .hero {
-            background-color: #f8f9fa;
-            padding: 100px 0;
-        }
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #0d6efd;
-        }
-    </style>
+    <link rel="stylesheet" href="/frontend/styles/style.css">
 </head>
 <body>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="#">FinanzaApp</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +33,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container text-center">
+    <section class="hero text-center py-5">
+        <div class="container">
             <h1 class="display-4 mb-4">Bienvenido a FinanzaApp</h1>
             <p class="lead mb-5">Tu asistente personal para una mejor gestión financiera</p>
             <a href="./pages/register.html" class="btn btn-primary btn-lg">Comienza Ahora</a>
@@ -53,18 +44,18 @@
     <!-- Features Section -->
     <section class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center mb-4">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
                     <i class="fas fa-chart-line feature-icon"></i>
                     <h3>Seguimiento de Gastos</h3>
                     <p>Mantén un registro detallado de tus gastos e ingresos.</p>
                 </div>
-                <div class="col-md-4 text-center mb-4">
+                <div class="col-md-4 mb-4">
                     <i class="fas fa-piggy-bank feature-icon"></i>
                     <h3>Ahorro Inteligente</h3>
                     <p>Establece metas de ahorro y alcánzalas con nuestras herramientas.</p>
                 </div>
-                <div class="col-md-4 text-center mb-4">
+                <div class="col-md-4 mb-4">
                     <i class="fas fa-lock feature-icon"></i>
                     <h3>Seguridad Garantizada</h3>
                     <p>Tu información financiera está segura con nuestra encriptación avanzada.</p>
@@ -73,14 +64,81 @@
         </div>
     </section>
 
+    <!-- Sección del Gráfico -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-3">
+                📊 Análisis de Gastos Mensuales 
+            </h2>
+            <p> 
+                Distribución de los gastos en los últimos cinco meses para identificar tendencias y optimizar el ahorro.
+            </p>
+            
+            
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <canvas id="financeChart"></canvas> <!-- Aquí irá el gráfico -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-light py-4">
+    <footer class="py-4 bg-primary text-white">
         <div class="container text-center">
-            <p> 2º DAW | 2025 | PROYECTO SAN VALERO</p> 
+            <p>2º DAW | 2025 | PROYECTO SAN VALERO</p> 
+            <!-- Redes Sociales -->
+            <div class="social-icons d-flex justify-content-center mt-2">
+                <a href="https://facebook.com" target="_blank" class="me-3 text-white">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="me-3 text-white">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="me-3 text-white">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="text-white">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Script para el Gráfico -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById('financeChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar', // Puedes cambiarlo a 'line', 'pie', etc.
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+                datasets: [{
+                    label: 'Gastos Mensuales (€)',
+                    data: [300, 450, 320, 600, 500], // Valores de ejemplo
+                    backgroundColor: 'rgba(12, 237, 136, 0.7)', // Color del gráfico
+                    borderColor: 'rgba(12, 237, 136, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
