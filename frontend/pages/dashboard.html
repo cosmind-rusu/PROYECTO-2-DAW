@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suscripciones - Finanzas App</title>
+    <title>Dashboard - Finanzas App</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -33,21 +33,30 @@
             background-color: #2d4373;
             border-color: #2d4373;
         }
-        .subscription-item {
+        .subscription-item, .transaction-item {
             display: flex;
             align-items: center;
             padding: 1rem;
             border-bottom: 1px solid #e9ecef;
         }
-        .subscription-item:last-child {
+        .subscription-item:last-child, .transaction-item:last-child {
             border-bottom: none;
         }
-        .subscription-icon {
+        .subscription-icon, .transaction-icon {
             width: 40px;
             height: 40px;
             margin-right: 1rem;
             object-fit: cover;
             border-radius: 50%;
+        }
+        .transaction-amount {
+            font-weight: bold;
+        }
+        .transaction-amount.income {
+            color: #28a745;
+        }
+        .transaction-amount.expense {
+            color: #dc3545;
         }
     </style>
 </head>
@@ -73,7 +82,8 @@
     <div class="container dashboard-container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <!-- Sección de Suscripciones -->
+                <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">
                             <i class="fas fa-calendar-alt me-2"></i>Mis Suscripciones
@@ -87,6 +97,26 @@
                             </button>
                             <div class="total-subscriptions">
                                 Total mensual: <span class="fw-bold">€0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nueva Sección de Transacciones -->
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-exchange-alt me-2"></i>Mis Transacciones
+                        </h2>
+                        <div class="transaction-list mb-3">
+                            <!-- Las transacciones se cargarán dinámicamente aquí -->
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTransactionModal">
+                                <i class="fas fa-plus me-1"></i>Añadir Transacción
+                            </button>
+                            <div class="total-balance">
+                                Balance: <span class="fw-bold">€0.00</span>
                             </div>
                         </div>
                     </div>
@@ -133,6 +163,56 @@
         </div>
     </div>
 
+    <!-- Nuevo Modal para añadir transacción -->
+    <div class="modal fade" id="addTransactionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Añadir Transacción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="transactionForm">
+                        <div class="mb-3">
+                            <label for="transactionDescription" class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="transactionDescription" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionAmount" class="form-label">Monto</label>
+                            <input type="number" class="form-control" id="transactionAmount" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionType" class="form-label">Tipo</label>
+                            <select class="form-select" id="transactionType" required>
+                                <option value="">Selecciona un tipo</option>
+                                <option value="ingreso">Ingreso</option>
+                                <option value="gasto">Gasto</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionCategory" class="form-label">Categoría</label>
+                            <select class="form-select" id="transactionCategory" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="nomina">Nómina</option>
+                                <option value="ocio">Ocio</option>
+                                <option value="comida">Comida</option>
+                                <option value="transporte">Transporte</option>
+                                <option value="hogar">Hogar</option>
+                                <option value="salud">Salud</option>
+                                <option value="educacion">Educación</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -141,3 +221,4 @@
     <script type="module" src="../js/dashboard.js"></script>
 </body>
 </html>
+
