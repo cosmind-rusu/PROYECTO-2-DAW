@@ -16,3 +16,12 @@ dotnet tool install --global dotnet-ef
 
 dotnet ef migrations add Inicial
 dotnet ef database update
+
+## SWAGGER
+http://localhost:5230/swagger/
+
+
+## GENERAR TOKEN
+
+Con OpenSSL
+openssl rand -base64 64
