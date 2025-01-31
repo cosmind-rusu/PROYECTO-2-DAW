@@ -1,0 +1,18 @@
+### CREACION
+
+dotnet new webapi -n Backend
+
+
+### DEPENDENCIAS
+
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+
+
+### USO DE MIGRACIONES
+
+dotnet tool install --global dotnet-ef
+
+dotnet ef migrations add Inicial
+dotnet ef database update
