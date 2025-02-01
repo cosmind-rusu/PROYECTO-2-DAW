@@ -1,0 +1,6 @@
+FROM nginx:alpine
+# Copiar la configuración de Nginx (asegúrate de que nginx.conf se encuentre en la raíz del proyecto frontend)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copiar los archivos estáticos
+COPY . /usr/share/nginx/html
+EXPOSE 80

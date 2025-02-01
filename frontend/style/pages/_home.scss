@@ -1,0 +1,9 @@
+/* _home.scss */
+@use "../base/variables" as *;
+@use "../base/mixin" as *;
+
+.hero {
+    background-color: $background-color;
+    padding: $spacing-unit * 10 0;
+    text-align: center;
+}

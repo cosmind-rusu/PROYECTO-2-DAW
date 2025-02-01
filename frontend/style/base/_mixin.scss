@@ -1,0 +1,28 @@
+/* _mixin.scss */
+@use "variables" as *;
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin button-style($bg-color) {
+    background-color: $bg-color;
+    border: none;
+    padding: $spacing-unit $spacing-unit * 2;
+    border-radius: $border-radius;
+    color: white;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: $bg-color;
+    }
+  }
+  
+  @mixin card-style {
+    background-color: white;
+    padding: $spacing-unit * 2;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+  

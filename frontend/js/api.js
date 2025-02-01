@@ -1,7 +1,7 @@
 
 import auth from './auth.js';
 
-const BASE_URL = 'http://localhost:5230/api';
+const BASE_URL = '/api';
 
 export async function fetchAuth(endpoint, options = {}) {
     const token = auth.getToken();

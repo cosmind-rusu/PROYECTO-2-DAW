@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            const response = await fetch('http://localhost:5230/api/Auth/register', {
+            const response = await fetch('/api/Auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
