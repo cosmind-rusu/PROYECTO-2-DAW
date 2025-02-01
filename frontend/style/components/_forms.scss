@@ -1,0 +1,30 @@
+/* _forms.scss */
+@use "../base/variables" as *;
+@use "../base/mixin" as *;
+@use "buttons" as *;
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-unit;
+  
+    &__group {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    &__input {
+      padding: $spacing-unit;
+      border: 1px solid $text-color;
+      border-radius: $border-radius;
+  
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+      }
+    }
+  
+    &__button {
+      @extend .button;
+    }
+  }
+  
