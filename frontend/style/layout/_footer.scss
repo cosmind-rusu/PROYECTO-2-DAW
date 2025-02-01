@@ -1,0 +1,24 @@
+ /* _footer.scss */
+ @use "../base/variables" as *;
+ .footer {
+     background-color: whitesmoke;
+     color: $primary-color;
+     padding: 20px;
+     text-align: center;
+     p {
+         margin-bottom: 10px;
+     }
+     .social-icons {
+         margin-top: 10px;
+         a {
+             display: inline-block;
+             margin: 0 10px;
+             color: $primary-color;
+             font-size: 35px;
+             transition: color 0.3s ease;
+             &:hover {
+                 color: #140661; // Color al pasar el ratón por encima
+             }
+         }
+     }
+ }

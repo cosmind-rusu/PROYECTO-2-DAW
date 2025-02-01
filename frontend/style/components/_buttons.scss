@@ -1,0 +1,10 @@
+/* _buttons.scss */
+@use "../base/variables" as *;
+@use "../base/mixin" as *;
+.button {
+    @include button-style($primary-color);
+    
+    &--secondary {
+      @include button-style($secondary-color);
+    }
+  }

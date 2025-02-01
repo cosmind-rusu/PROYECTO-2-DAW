@@ -1,0 +1,16 @@
+/* _header.scss */
+@use "../base/variables" as *;
+@use "../base/mixin" as *;
+.header {
+    background-color: white;
+    padding: 8px * 2;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-nav {
+    background-color: white;
+    margin-left: auto; 
+}

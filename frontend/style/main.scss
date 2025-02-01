@@ -1,15 +1,17 @@
-@use 'base/variables';
-@use 'base/mixin';
-@use 'base/reset';
+/* main.scss */
 
-@use 'components/buttons';
-@use 'components/forms';
-@use 'components/nav';
+@use "base/variables" as v;
+@use "base/mixin";
+/* @use "base/reset"; */
 
-@use 'layout/footer';
-@use 'layout/grid';
-@use 'layout/header';
+@use "layout/header";
+@use "layout/footer";
+@use "layout/grid";
 
-@use 'pages/home';
-@use 'pages/about';
-@use 'pages/contact'
+@use "components/buttons";
+@use "components/forms";
+@use "components/nav";
+
+@use "pages/home";
+@use "pages/about";
+@use "pages/contact";

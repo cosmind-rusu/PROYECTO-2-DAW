@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             console.log('Enviando petición al servidor...');
-            const response = await fetch('http://localhost:5230/api/Auth/login', {
+            const response = await fetch('/api/Auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
