@@ -13,12 +13,12 @@ namespace Backend.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Suscripcion> Suscripciones { get; set; }
         public DbSet<Transaccion> Transacciones { get; set; }
+        public DbSet<Ahorro> Ahorros { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configuración de relaciones y restricciones
             modelBuilder.Entity<Usuario>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
@@ -33,6 +33,12 @@ namespace Backend.Data
                 .HasOne(t => t.Usuario)
                 .WithMany()
                 .HasForeignKey(t => t.UsuarioId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Ahorro>()
+                .HasOne(a => a.Usuario)
+                .WithMany()
+                .HasForeignKey(a => a.UsuarioId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
