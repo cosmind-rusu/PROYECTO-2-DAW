@@ -15,26 +15,11 @@ services:
     networks:
       - finanzas_network
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: finanzas_pgadmin
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
-    ports:
-      - "5050:80"
-    depends_on:
-      - postgres
-    networks:
-      - finanzas_network
-
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: cosmindrusu/finanzas-backend:1.0
     container_name: finanzas_backend
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=finanzasdb;Username=admin;Password=admin
     ports:
@@ -45,9 +30,7 @@ services:
       - finanzas_network
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: cosmindrusu/finanzas-frontend:1.0
     container_name: finanzas_frontend
     ports:
       - "80:80"
